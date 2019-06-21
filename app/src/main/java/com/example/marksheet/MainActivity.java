@@ -35,11 +35,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                Retrofit.Builder builder = new Retrofit.Builder()
-                        .baseUrl("http://192.168.100.94:5000/")
-                        .addConverterFactory(GsonConverterFactory.create());
-                Retrofit retrofit = builder.build();
-                Auth auth = retrofit.create(Auth.class);
+                Auth auth = Urls.getInstance().create(Auth.class);
 
                 usernameEditText = findViewById(R.id.username);
                 String username = usernameEditText.getText().toString();
