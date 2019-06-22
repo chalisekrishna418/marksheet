@@ -1,5 +1,6 @@
 package com.example.marksheet;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -57,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
                             System.out.println("role: " + loginDataList.getRole());
                             System.out.println("UserId: " + loginDataList.getUserId());
                             System.out.println("Token: " + loginDataList.getToken());
+                            Intent dashboardIntent = new Intent(MainActivity.this, DashboardActivity.class);
+                            startActivity(dashboardIntent);
                         } else {
                             Toast.makeText(MainActivity.this, "Wrong Credentials!!!", Toast.LENGTH_SHORT).show();
 
