@@ -55,9 +55,6 @@ public class MainActivity extends AppCompatActivity {
                         LoginDataList loginDataList = response.body();
                         System.out.println(loginDataList);
                         if (response.isSuccessful()) {
-                            System.out.println("role: " + loginDataList.getRole());
-                            System.out.println("UserId: " + loginDataList.getUserId());
-                            System.out.println("Token: " + loginDataList.getToken());
                             Intent dashboardIntent = new Intent(MainActivity.this, DashboardActivity.class);
                             startActivity(dashboardIntent);
                         } else {

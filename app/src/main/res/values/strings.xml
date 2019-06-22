@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Marksheet</string>
+    <string name="open_navigation_drawer">Open Navigation Bar</string>
+    <string name="close_navigation_drawer">Close Navigation Bar</string>
 </resources>

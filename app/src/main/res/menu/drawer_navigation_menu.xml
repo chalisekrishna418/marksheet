@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/marksheet"
+            android:icon="@drawable/ic_marsheet"
+            android:title="Marksheets"/>
+        <item android:id="@+id/aboutschool"
+            android:icon="@drawable/ic_school"
+            android:title="About School"/>
+    </group>
+
+    <item android:title="App Specifics">
+        <menu>
+            <item android:id="@+id/feedback"
+                android:title="Feedback"
+                android:icon="@drawable/ic_feedback"/>
+            <item android:id="@+id/aboutus"
+                android:title="About Us"
+                android:icon="@drawable/ic_aboutus"/>
+        </menu>
+    </item>
+
+</menu>
