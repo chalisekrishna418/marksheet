@@ -7,8 +7,7 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
     android:fitsSystemWindows="true"
-    tools:context=".DashboardActivity"
-    tools:openDrawer="start">
+    tools:context=".DashboardActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,7 +38,6 @@
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_navigation_menu"
         />
-
 
 
 </android.support.v4.widget.DrawerLayout>
