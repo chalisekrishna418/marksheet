@@ -1,5 +1,6 @@
 package com.example.marksheet;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -8,24 +9,70 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.marksheet.Models.StudentDetails;
+import com.example.marksheet.domain.StudentDataList;
+import com.example.marksheet.utils.Session;
+import com.example.marksheet.utils.Urls;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
+    public static TextView userName, userRole;
+    String fullName="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
         drawer = findViewById(R.id.drawer_layout);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerLayout = navigationView.getHeaderView(0);
+        userName = headerLayout.findViewById(R.id.user_name);
+        userRole = headerLayout.findViewById(R.id.user_role);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        System.out.println("UserId: " + Session.getUserId());
+        StudentDetails studentDetails = Urls.getInstance().create(StudentDetails.class);
+        Call<StudentDataList> call = studentDetails.getStudentDetails();
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        call.enqueue(new Callback<StudentDataList>() {
+            @Override
+            public void onResponse(Call<StudentDataList> call, Response<StudentDataList> response) {
+                Log.d("Logs","data posted");
+                Log.d("URL","url used:" + call.request().url());
+
+                if (response.isSuccessful()){
+                    StudentDataList studentDataList = response.body();
+                    Log.v("Log", "Student Data Response: " + studentDataList);
+                    Log.v("Log", "First Name" + studentDataList.getParent_name());
+                    userName.setText(studentDataList.getParent_name());
+                    userRole.setText("parent");
+
+                } else {
+                    Toast.makeText(DashboardActivity.this, "Cannot Load Data!!!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<StudentDataList> call, Throwable t) {
+                Toast.makeText(DashboardActivity.this, "Network error", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.open_navigation_drawer, R.string.close_navigation_drawer);
@@ -41,11 +88,16 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
             case R.id.marksheet:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MarksheetFragment()).commit();
+                Intent marksheetIntent = new Intent(DashboardActivity.this, MarksheetActivity.class);
+                startActivity(marksheetIntent);
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MarksheetFragment()).commit();
                 break;
             case R.id.aboutschool:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutSchoolFragment()).commit();
                 break;
+            case R.id.edit_profile:
+                Intent dashboardIntent = new Intent(DashboardActivity.this, EditProfileActivity.class);
+                startActivity(dashboardIntent);
             case R.id.feedback:
                 Toast.makeText(this, "Feedback Button", Toast.LENGTH_SHORT).show();
             case R.id.aboutus:

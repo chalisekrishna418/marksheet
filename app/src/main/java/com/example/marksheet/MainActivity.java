@@ -13,6 +13,7 @@ import com.example.marksheet.Models.Auth;
 import com.example.marksheet.domain.LoginDataList;
 import com.example.marksheet.utils.Urls;
 
+import com.example.marksheet.utils.Session;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -47,10 +48,13 @@ public class MainActivity extends AppCompatActivity {
                 call.enqueue(new Callback<LoginDataList>() {
                     @Override
                     public void onResponse(Call<LoginDataList> call, Response<LoginDataList> response) {
-                        Log.i("Logs", "post submitted to API.status code: " + response.body());
+                        Log.d("Logs", "post submitted to API.status code: " + response.body().toString());
                         LoginDataList loginDataList = response.body();
-                        System.out.println(loginDataList);
+
                         if (response.isSuccessful()) {
+                            Session.userId = loginDataList.getUserId();
+                            Session.role = loginDataList.getRole();
+                            Session.token = loginDataList.getToken();
                             Intent dashboardIntent = new Intent(MainActivity.this, DashboardActivity.class);
                             startActivity(dashboardIntent);
                         } else {

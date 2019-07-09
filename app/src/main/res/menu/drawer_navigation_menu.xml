@@ -10,6 +10,9 @@
         <item android:id="@+id/aboutschool"
             android:icon="@drawable/ic_school"
             android:title="About School"/>
+        <item android:id="@+id/edit_profile"
+            android:icon="@drawable/ic_user"
+            android:title="Edit profile"/>
     </group>
 
     <item android:title="App Specifics">
