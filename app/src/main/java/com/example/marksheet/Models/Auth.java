@@ -11,7 +11,7 @@ import com.example.marksheet.domain.LoginDataList;
 
 public interface Auth {
 
-    @POST("/api/auth/signin")
+    @POST("api/auth/signin")
     @FormUrlEncoded
     Call<LoginDataList> login(@Field("email") String username,
                               @Field("password") String password);

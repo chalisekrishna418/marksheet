@@ -5,173 +5,279 @@
     android:background="@android:color/holo_blue_light"
     android:paddingHorizontal="10dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Softwarica College"
-        android:textSize="30sp"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DilliBazar, Kathmandu, Nepal"
-        android:textSize="15sp"
-        android:layout_marginVertical="30dp"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Marksheet"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        android:layout_marginVertical="60dp"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Student Name: "
-        android:textSize="17sp"
-        android:textStyle="bold"
-        android:layout_marginTop="115dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/student_name"
-        android:textSize="17sp"
-        android:textStyle="normal"
-        android:layout_marginTop="115dp"
-        android:layout_marginHorizontal="200dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Class: "
-        android:textSize="17sp"
-        android:textStyle="bold"
-        android:layout_marginTop="145dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/student_class"
-        android:textSize="17sp"
-        android:textStyle="normal"
-        android:layout_marginTop="145dp"
-        android:layout_marginHorizontal="200dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Parent Name: "
-        android:textSize="17sp"
-        android:textStyle="bold"
-        android:layout_marginTop="185dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/parent_name"
-        android:textSize="17sp"
-        android:textStyle="normal"
-        android:layout_marginTop="185dp"
-        android:layout_marginHorizontal="200dp"/>
-
     <ScrollView
+        android:id="@+id/scroll_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <TableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="225dp">
-
-        <TableRow
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content">
-
-            <TextView
-                android:text="S.No."
-                android:textStyle="bold"
-                android:layout_width="25pt"
-                android:padding="1dp"/>
-
-            <TextView
-                android:text="Subject"
-                android:textStyle="bold"
-                android:layout_width="60pt"
-                android:padding="1dp"/>
-
-            <TextView
-                android:text="F.M"
-                android:textStyle="bold"
-                android:layout_width="25pt"
-                android:padding="1dp"/>
-
-            <TextView
-                android:text="P.M"
-                android:layout_width="25pt"
-                android:textStyle="bold"
-                android:padding="1dp"/>
-
-            <TextView
-                android:text="O.M"
-                android:layout_width="25pt"
-                android:textStyle="bold"
-                android:padding="1dp"/>
-
-        </TableRow>
-
-        <View
-            android:layout_width="fill_parent"
-            android:background="#400"
-            android:layout_height="2dp"
-            android:paddingTop="5dp"/>
-        <ListView
-            android:layout_height="match_parent"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:id="@+id/marksList">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <TableRow
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Softwarica College"
+            android:textSize="30sp"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DilliBazar, Kathmandu, Nepal"
+            android:textSize="15sp"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Marksheet"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content">
+                android:text="Student Name: "
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/student_name"
+                android:textSize="17sp"
+                android:layout_marginHorizontal="20dp"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Class: "
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/student_class"
+                android:textSize="17sp"
+                android:textStyle="normal"
+                android:layout_marginLeft="90dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Parent Name: "
+                android:textSize="17sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/parent_name"
+                android:textSize="17sp"
+                android:textStyle="normal"
+                android:layout_marginHorizontal="20dp"/>
+        </LinearLayout>
+
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="25pt"
+                        android:padding="1dp"
+                        android:text="S.No."
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="60pt"
+                        android:padding="1dp"
+                        android:text="Subject"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="25pt"
+                        android:padding="1dp"
+                        android:text="F.M"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="25pt"
+                        android:padding="1dp"
+                        android:text="P.M"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="25pt"
+                        android:padding="1dp"
+                        android:text="O.M"
+                        android:textStyle="bold" />
+
+                </TableRow>
+            </TableLayout>
+
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="#400"
+                android:paddingTop="5dp" />
+
+            <LinearLayout
+                android:id="@+id/marks_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/second_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginVertical="25dp"
+                    android:background="#400"
+                    android:paddingTop="5dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/serial_no"
-                    android:textStyle="bold"
-                    android:layout_width="20pt"
-                    android:padding="1dp"/>
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="2dp"
+                    android:padding="1dp"
+                    android:text="Total"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/subject"
-                    android:textStyle="bold"
-                    android:layout_width="60dp"
-                    android:padding="1dp"/>
-
-                <TextView
-                    android:id="@+id/full_marks"
-                    android:textStyle="bold"
+                    android:id="@+id/total_full_marks"
                     android:layout_width="25pt"
-                    android:padding="1dp"/>
+                    android:layout_height="wrap_content"
+                    android:padding="1dp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/pass_marks"
-                    android:textStyle="bold"
+                    android:id="@+id/total_pass_marks"
                     android:layout_width="25pt"
-                    android:padding="1dp"/>
+                    android:layout_height="wrap_content"
+                    android:padding="1dp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/obtained_marks"
-                    android:textStyle="bold"
+                    android:id="@+id/total_obtained_marks"
                     android:layout_width="25pt"
-                    android:padding="1dp"/>
+                    android:layout_height="wrap_content"
+                    android:right="1dp"
+                    android:textStyle="bold" />
+                </LinearLayout>
 
-            </TableRow>
-        </ListView>
-        </TableLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/percentage_text"
+                    android:layout_width="80pt"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:padding="1dp"
+                    android:text="Percentage: "
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/percentage"
+                    android:layout_width="80pt"
+                    android:layout_height="match_parent"
+                    android:padding="5dp"
+                    android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/division_text"
+                    android:layout_width="60pt"
+                    android:layout_height="match_parent"
+                    android:padding="1dp"
+                    android:text="Division: "
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/division"
+                    android:layout_width="80pt"
+                    android:layout_height="match_parent"
+                    android:padding="1dp"
+                    android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/feedback_text"
+                    android:layout_width="60pt"
+                    android:layout_height="match_parent"
+                    android:padding="1dp"
+                    android:layout_marginTop="30dp"
+                    android:text="Feedback: "
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:id="@+id/result_feedback"
+                    android:textSize="20sp"/>
+
+                <Button
+                    android:id="@+id/result_feedback_submit"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#454545"
+                    android:text="Submit"
+                    android:textSize="30sp" />
+
+            </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 
 

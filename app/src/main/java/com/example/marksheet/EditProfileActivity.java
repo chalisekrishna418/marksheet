@@ -13,6 +13,7 @@ import com.example.marksheet.Models.StudentDetails;
 import com.example.marksheet.domain.LoginDataList;
 import com.example.marksheet.domain.StudentDataList;
 import com.example.marksheet.utils.Session;
+import com.example.marksheet.utils.StudentData;
 import com.example.marksheet.utils.Urls;
 
 import retrofit2.Call;
@@ -20,7 +21,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EditProfileActivity extends AppCompatActivity {
-    private EditText fname, mname, lname, parentPhone, dob, gender, address, bloodGroup;
+    EditText fname, mname, lname, parentPhone, dob, gender, address, bloodGroup;
     private Button submitUpdate;
 
     @Override
@@ -28,22 +29,34 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
+        fname = findViewById(R.id.fnameEditText);
+        mname = findViewById(R.id.mnameEditText);
+        lname = findViewById(R.id.lnameEditText);
+        parentPhone = findViewById(R.id.parentPhoneEditText);
+        dob = findViewById(R.id.dobEditText);
+        gender = findViewById(R.id.genderEditText);
+        address = findViewById(R.id.addressEditText);
+        bloodGroup = findViewById(R.id.bloodGroupEditText);
+
+        fname.setText(StudentData.fname);
+        mname.setText(StudentData.mname);
+        lname.setText(StudentData.lname);
+        parentPhone.setText(StudentData.parent_phone);
+        dob.setText(StudentData.dob);
+        gender.setText(StudentData.gender);
+        address.setText(StudentData.address);
+        bloodGroup.setText(StudentData.blood_group);
+
         submitUpdate = findViewById(R.id.saveStudentUpdate);
         submitUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 StudentDetails studentDetails = Urls.getInstance().create(StudentDetails.class);
-                fname = findViewById(R.id.fnameEditText);
-                mname = findViewById(R.id.mnameEditText);
-                lname = findViewById(R.id.lnameEditText);
-                parentPhone = findViewById(R.id.parentPhoneEditText);
-                dob = findViewById(R.id.dobEditText);
-                gender = findViewById(R.id.genderEditText);
-                address = findViewById(R.id.addressEditText);
-                bloodGroup = findViewById(R.id.bloodGroupEditText);
 
                 Call<StudentDataList> call = studentDetails.updateStudentDetails(
-                        "Bearer " + Session.token,fname.getText().toString(),
+                        "Bearer " + Session.token,
+                        Session.userId,
+                        fname.getText().toString(),
                         mname.getText().toString(), lname.getText().toString(),
                         parentPhone.getText().toString(), dob.getText().toString(),
                         gender.getText().toString(), address.getText().toString(),
@@ -57,6 +70,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
                         if (response.isSuccessful()) {
                             Log.d("Logs", "post submitted to API.status code: " + response.body().toString());
+                            Toast.makeText(EditProfileActivity.this, "Profile Update successful!!!", Toast.LENGTH_SHORT).show();
                             Intent dashboardIntent = new Intent(EditProfileActivity.this, DashboardActivity.class);
                             startActivity(dashboardIntent);
                         } else {

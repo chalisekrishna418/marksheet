@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.marksheet.Models.StudentDetails;
 import com.example.marksheet.domain.StudentDataList;
 import com.example.marksheet.utils.Session;
+import com.example.marksheet.utils.StudentData;
 import com.example.marksheet.utils.Urls;
 
 import retrofit2.Call;
@@ -45,7 +46,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
 
         System.out.println("UserId: " + Session.getUserId());
         StudentDetails studentDetails = Urls.getInstance().create(StudentDetails.class);
-        Call<StudentDataList> call = studentDetails.getStudentDetails();
+        Call<StudentDataList> call = studentDetails.getStudentDetails(Session.userId);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -57,9 +58,18 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 Log.d("URL","url used:" + call.request().url());
 
                 if (response.isSuccessful()){
+                    Log.i("HTTP","Response:" + response.body());
                     StudentDataList studentDataList = response.body();
-                    Log.v("Log", "Student Data Response: " + studentDataList);
-                    Log.v("Log", "First Name" + studentDataList.getParent_name());
+                    StudentData.fname = studentDataList.getFname();
+                    StudentData.mname = studentDataList.getMname();
+                    StudentData.lname = studentDataList.getLname();
+                    StudentData.parent_phone = studentDataList.getParent_phone();
+                    StudentData.dob = studentDataList.getDob();
+                    StudentData.gender = studentDataList.getGender();
+                    StudentData.address = studentDataList.getAddress();
+                    StudentData.blood_group = studentDataList.getBlood_group();
+                    Log.i("Log", "Student Data Response: " + studentDataList);
+                    Log.i("Log", "First Name" + studentDataList.getParent_name());
                     userName.setText(studentDataList.getParent_name());
                     userRole.setText("parent");
 
@@ -79,8 +89,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         drawer.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MarksheetFragment()).commit();
-            navigationView.setCheckedItem(R.id.marksheet);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutSchoolFragment()).commit();
+            drawer.closeDrawer(GravityCompat.START);
         }
     }
 
@@ -90,7 +100,6 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             case R.id.marksheet:
                 Intent marksheetIntent = new Intent(DashboardActivity.this, MarksheetActivity.class);
                 startActivity(marksheetIntent);
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MarksheetFragment()).commit();
                 break;
             case R.id.aboutschool:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutSchoolFragment()).commit();
@@ -98,10 +107,18 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
             case R.id.edit_profile:
                 Intent dashboardIntent = new Intent(DashboardActivity.this, EditProfileActivity.class);
                 startActivity(dashboardIntent);
+                break;
+            case R.id.logout:
+                Session.userId=Session.parentUserId=Session.role=Session.token="";
+                Intent mainActivity = new Intent(DashboardActivity.this, MainActivity.class);
+                startActivity(mainActivity);
+                break;
             case R.id.feedback:
                 Toast.makeText(this, "Feedback Button", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.aboutus:
                 Toast.makeText(this, "About App Button Clicked", Toast.LENGTH_SHORT).show();
+                break;
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;

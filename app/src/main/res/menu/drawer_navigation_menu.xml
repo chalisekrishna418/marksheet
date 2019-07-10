@@ -13,6 +13,9 @@
         <item android:id="@+id/edit_profile"
             android:icon="@drawable/ic_user"
             android:title="Edit profile"/>
+        <item android:id="@+id/logout"
+            android:icon="@drawable/ic_user"
+            android:title="Logout"/>
     </group>
 
     <item android:title="App Specifics">

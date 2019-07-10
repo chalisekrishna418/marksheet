@@ -8,4 +8,10 @@
         Established in 2010, the college has crossed significant milestones in this short span of time.
         Softwarica College is one of the Best IT College in Nepal for student satisfaction in terms of course delivery and other academic resources.</string>
     <string name="title_activity_edit_profile">EditProfileActivity</string>
+
+    <string-array name="profile_gender">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
 </resources>

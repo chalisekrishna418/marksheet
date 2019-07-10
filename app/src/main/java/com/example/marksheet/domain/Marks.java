@@ -11,15 +11,15 @@ public class Marks {
 
         @SerializedName("full_marks")
         @Expose
-        private String fullMarks;
+        private int fullMarks;
 
         @SerializedName("pass_marks")
         @Expose
-        private String passMarks;
+        private int passMarks;
 
-        @SerializedName("obtain_marks")
+        @SerializedName("obtained_marks")
         @Expose
-        private String obtainedMarks;
+        private int obtainedMarks;
 
         public String getSubject() {
                 return subject;
@@ -29,27 +29,27 @@ public class Marks {
                 this.subject = subject;
         }
 
-        public String getFullMarks() {
+        public int getFullMarks() {
                 return fullMarks;
         }
 
-        public void setFullMarks(String fullMarks) {
+        public void setFullMarks(int fullMarks) {
                 this.fullMarks = fullMarks;
         }
 
-        public String getPassMarks() {
+        public int getPassMarks() {
                 return passMarks;
         }
 
-        public void setPassMarks(String passMarks) {
+        public void setPassMarks(int passMarks) {
                 this.passMarks = passMarks;
         }
 
-        public String getObtainedMarks() {
+        public int getObtainedMarks() {
                 return obtainedMarks;
         }
 
-        public void setObtainedMarks(String obtainedMarks) {
+        public void setObtainedMarks(int obtainedMarks) {
                 this.obtainedMarks = obtainedMarks;
         }
 

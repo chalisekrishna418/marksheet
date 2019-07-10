@@ -4,9 +4,9 @@
     android:layout_height="match_parent"
     android:background="@android:color/holo_blue_light">
 
-    <android.support.v4.widget.NestedScrollView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -196,51 +196,18 @@
 
             </LinearLayout>
 
-            <TextView
-                android:text="Profile Image:"
-                android:layout_below="@+id/bloodGroupEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:id="@+id/profileImageText"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_toEndOf="@id/profileImageText"
-                    android:layout_below="@+id/bloodGroupEditText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/uploadProfileImage"
-                    android:background="#45454545"
-                    android:text="Upload"/>
-
-                <Button
-                    android:layout_toEndOf="@+id/uploadProfileImage"
-                    android:layout_below="@+id/bloodGroupEditText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/clickNewImage"
-                    android:background="#45454545"
-                    android:layout_marginLeft="50px"
-                    android:text="Upload"/>
-            </LinearLayout>
-
             <Button
                 android:layout_below="@+id/clickNewImage"
-                android:layout_marginTop="200px"
-                android:layout_centerHorizontal="true"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/saveStudentUpdate"
                 android:background="#45454545"
+                android:gravity="center"
+                android:layout_marginTop="30dp"
                 android:text="Upload"/>
 
         </LinearLayout>
 
-    </android.support.v4.widget.NestedScrollView>
+    </ScrollView>
 
 </RelativeLayout>

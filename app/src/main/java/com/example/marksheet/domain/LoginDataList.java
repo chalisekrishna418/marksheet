@@ -3,6 +3,8 @@ package com.example.marksheet.domain;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class LoginDataList {
 
     @SerializedName("userId")
@@ -17,6 +19,13 @@ public class LoginDataList {
     @SerializedName("message")
     @Expose
     private String message;
+    @SerializedName("students")
+    @Expose
+    private List<StudentDataList> student;
+
+    public List<StudentDataList> getStudent() { return student; }
+
+    public void setStudent(List<StudentDataList> student) { this.student = student; }
 
     public String getMessage() {return message;}
 
