@@ -1,0 +1,19 @@
+codecov:
+  # TODO:: set this token in env and utilise it
+  token: 7d40ae78-652d-489c-ab4a-b3e787f51d30
+  
+# for differnt options available
+# refer codecov documentation (https://docs.codecov.io/docs/pull-request-comments)
+comment:
+  layout: "diff"
+  behavior: new
+  require_changes: false  # if true: only post the comment if coverage changes
+  require_base: no        # [yes :: must have a base report to post]
+  require_head: no       # [yes :: must have a head report to post]
+  branches: null
+
+coverage:
+  status:
+    project:
+      java:
+        paths: "app/src/"
